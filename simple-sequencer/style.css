@@ -11,10 +11,17 @@ body {
 .sequence-button {
   height: 50px;
   width: 50px;
-  border: 1px;
-  border-color: black;
+  border: 3px solid;
+  border-color: white;
+  background-color: gray;
+  float:left;
+  margin: 2px;
 }
 
-.sequence-button .active {
+.sequence-button.active {
   background-color: orange;
+}
+
+.sequence-button.current {
+  border-color: lightblue;
 }

@@ -2,20 +2,30 @@
 
 var $ = require("jquery");
 var Tone = require("Tone");
-var synth = new Tone.SimpleSynth().toMaster();
+var synth = new Tone.Sampler({
+  A: "330042__andreonate__dre-kick-09.wav"
+}).toMaster();
 
-function make
-
-function playArpeggio() {
-  synth.triggerAttackRelease("A2", "8n",  "+4n * 0");
-  synth.triggerAttackRelease("C#3", "8n", "+4n * 1");
-  synth.triggerAttackRelease("E3", "8n",  "+4n * 2");
-  synth.triggerAttackRelease("A3", "8n",  "+4n * 3");
-  synth.triggerAttackRelease("C#4", "8n", "+4n * 4");
-  synth.triggerAttackRelease("E4", "8n",  "+4n * 5");
-  synth.triggerAttackRelease("A4", "8n",  "+4n * 6");
+function toggleButton() {
+  if ($(this).hasClass("active")) {
+    $(this).removeClass("active");
+  } else {
+    $(this).addClass("active");
+  }
 }
 
 $(document).ready(function() {
-  $("button[name=arpeggio]").click(playArpeggio);
+  $("div.sequence-button").click(toggleButton);
+  Tone.Transport.timeSignature = 4;
+
+  var seq = new Tone.Sequence(function(time, step) {
+    $(".sequence-button.current").removeClass("current");
+    $("div.sequence-button").eq(step).addClass("current");
+    if ($("div.sequence-button").eq(step).hasClass("active")) {
+      synth.triggerAttack("A", "8n");
+    }
+  }, [0,1,2,3,4,5,6,7], "8n");
+
+  Tone.Transport.start();
+  seq.start();
 });
