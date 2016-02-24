@@ -4,6 +4,8 @@ var $ = require("jquery");
 var Tone = require("Tone");
 var synth = new Tone.SimpleSynth().toMaster();
 
+function make
+
 function playArpeggio() {
   synth.triggerAttackRelease("A2", "8n",  "+4n * 0");
   synth.triggerAttackRelease("C#3", "8n", "+4n * 1");
