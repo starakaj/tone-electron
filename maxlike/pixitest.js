@@ -1,8 +1,13 @@
+var keyboard = require("keyboard");
+
 var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight,{backgroundColor : 0x1099bb, antialias:true});
 document.body.appendChild(renderer.view);
 
 var patchcord = null;
 var cordStartPoint = null;
+
+var nkey = keyboard.keyboard(110);
+nkey.press = addObject;
 
 window.onresize = function(event) {
   console.log("Resizing");
@@ -42,6 +47,10 @@ function endPatchCord(event) {
   patchcord.clear();
   stage.removeChild(patchcord);
   patchcord = null;
+}
+
+function addObject() {
+  var object = new PIXI.Graphics();
 }
 
 // start animating
