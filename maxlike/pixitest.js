@@ -1,4 +1,4 @@
-var keyboard = require("keyboard");
+var keyboard = require("./keyboard");
 
 var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight,{backgroundColor : 0x1099bb, antialias:true});
 document.body.appendChild(renderer.view);
@@ -6,7 +6,7 @@ document.body.appendChild(renderer.view);
 var patchcord = null;
 var cordStartPoint = null;
 
-var nkey = keyboard.keyboard(110);
+var nkey = keyboard.keyboard(78);
 nkey.press = addObject;
 
 window.onresize = function(event) {
@@ -51,6 +51,18 @@ function endPatchCord(event) {
 
 function addObject() {
   var object = new PIXI.Graphics();
+  var mp = renderer.plugins.interaction.mouse.global;
+  var p = new PIXI.Point(10, 10);
+  debugger;
+  if (mp.x > 0 && mp.x < renderer.width && mp.y > 0 && mp.y < renderer.height) {
+    p.x = mp.x; p.y = mp.y;
+  }
+
+  object.lineStyle(1, 0x0000FF, 1);
+  object.beginFill(0xBBBBBB, 1);
+  object.drawRect(0, 0, 100, 40);
+  object.position = p;
+  stage.addChild(object);
 }
 
 // start animating
