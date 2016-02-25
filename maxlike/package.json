@@ -1,0 +1,30 @@
+{
+  "name": "max-like",
+  "version": "1.0.0",
+  "description": "A max-like environment, written in javascript",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/starakaj/tone-electron.git"
+  },
+  "keywords": [
+    "tone",
+    "electron",
+    "node"
+  ],
+  "author": "Sam Tarakajian",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/starakaj/tone-electron/issues"
+  },
+  "homepage": "https://github.com/starakaj/tone-electron#readme",
+  "dependencies": {
+    "electron": "^0.4.1",
+    "electron-prebuilt": "^0.36.8",
+    "jquery": "^2.2.1",
+    "tone": "^0.6.1"
+  }
+}
