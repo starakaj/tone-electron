@@ -3,6 +3,7 @@ document.body.appendChild(renderer.view);
 
 // create the root of the scene graph
 var stage = new PIXI.Container();
+stage.hitArea = new PIXI.Rectangle(0, 0, renderer.width, renderer.height);
 
 // create a texture from an image path
 var texture = PIXI.Texture.fromImage('assets/basics/bunny.png');
@@ -19,6 +20,11 @@ bunny.position.x = 200;
 bunny.position.y = 150;
 
 stage.addChild(bunny);
+
+stage.interactive = true;
+stage.on("mousedown", function(event) {
+  bunny.position = new PIXI.Point(event.data.global.x, event.data.global.y);
+});
 
 // start animating
 animate();
