@@ -25,6 +25,7 @@
     "electron": "^0.4.1",
     "electron-prebuilt": "^0.36.8",
     "jquery": "^2.2.1",
+    "three": "^0.74.0",
     "tone": "^0.6.1"
   }
 }
